@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+    <script src="./renderer.js"></script>
+    <link href="./styles.css" rel="stylesheet">
+    <title>Study Timer <3</title>
+  
+  
+  
+  </div>
+  </head>
+
+<section>
+  <div id="Start" class="tabcontent" >
+  <h1>Study Timer <3</h1>
+    <button class="tablinks" onclick="openPage(event, 'Select')">Start!</button>
+  </div>
+</section>
+
+<sections>
+  <div id="Select" class="tabcontent">
+    <body>
+      Energy level:
+      <form>
+        <input type="radio" id="high" name="energy-level" value="high">
+        <label for="high">High</label><br>
+        <input type="radio" id="medium" name="energy-level" value="medium">
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="low" name="energy-level" value="low">
+        <label for="low">Low</label><br>
+      </form>
+      Motivation level:
+      <form>
+        <input type="radio" id="high" name="mot-level" value="high">
+        <label for="high">High</label><br>
+        <input type="radio" id="medium" name="mot-level" value="medium">
+        <label for="medium">Medium</label><br>
+        <input type="radio" id="low" name="mot-level" value="low">
+        <label for="low">Low</label><br>
+      </form>
+      Have you fallen behind?:
+      <form>
+       <input type="radio" id="yes" name="behind" value="yes">
+        <label for="yes">Yes :(</label><br>
+        <input type="radio" id="no" name="behind" value="no">
+        <label for="no">No :)</label><br>
+      </form>
+      Minutes (est.) til' catch up:
+      <form>
+      <input type="number" id="ctchUp" name="ctchUp" min="0" max="600">
+        <label for="ctchUp">minutes til' I'm all caught up!</label>
+      </form>
+
+      <button class="tablinks" onclick="openPage(event, 'Timer')">Go!</button>
+
+    </body>
+  </div>
+</section>
+<section>
+  <div id="timer" class=>
+
+  </div>
+</section>
+<section>
+  <div id="bye" class="tabcontent">
+    <body>
+    <button class="tablinks" onclick="openPage(event, 'Bye')">End</button>
+    </body>
+  </div>
+</section>
+  </body>
+</html>

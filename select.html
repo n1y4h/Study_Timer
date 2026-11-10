@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
+    <script src="./renderer.js"></script>
+    <link href="./styles.css" rel="stylesheet">
+ 
+  </head>
+  <style>
+    picture {
+      position: absolute ;
+      top: 0px;
+      left: 250px;
+      text-wrap: pretty;
+    }
+  
+
+
+    </style>
+    <sections>
+  <div id="Select" class="tabcontent">
+    <body>
+      
+
+      <h3>Energy level:</h3>
+      <form>
+        <input type="radio" id="high" name="energy-level" value="60">
+        <label for="high">High</label>
+        <input type="radio" id="medium" name="energy-level" value="30">
+        <label for="medium">Medium</label>
+        <input type="radio" id="low" name="energy-level" value="15">
+        <label for="low">Low</label>
+      </form>
+      <h3>Motivation level:</h3>
+      <form>
+        <input type="radio" id="high" name="mot-level" value="60">
+        <label for="high">High</label>
+        <input type="radio" id="medium" name="mot-level" value="30">
+        <label for="medium">Medium</label>
+        <input type="radio" id="low" name="mot-level" value="15">
+        <label for="low">Low</label>
+      </form>
+      <h3>Have you fallen behind?:</h3>
+      <form>
+       <input type="radio" id="yes" name="behind" value="yes">
+        <label for="yes">Yes :(</label>
+        <input type="radio" id="no" name="behind" value="no">
+        <label for="no">No :)</label>
+      </form>
+      <h3>Minutes (est.) til' catch up:</h3>
+ <input type="number" id="ctchUp" min="0" max="600" value="0"> minutes
+
+  <!-- Anchor link instead of button to navigate to cntdwn.html -->
+  <a href="cntdwn.html" id="startLink" onclick="saveSelections()">Go!</a>
+
+  <script>
+    // Store the selected values in localStorage when the user clicks the link
+    function saveSelections() {
+      const energyLevel = document.querySelector('input[name="energy-level"]:checked');
+      const motLevel = document.querySelector('input[name="mot-level"]:checked');
+      const catchUpTime = parseInt(document.getElementById("ctchUp").value, 10);
+
+      // Store values in localStorage
+      localStorage.setItem("energy-level", energyLevel ? energyLevel.value : 15);
+      localStorage.setItem("mot-level", motLevel ? motLevel.value : 15);
+      localStorage.setItem("catchUp", catchUpTime);
+    }
+  </script>
+   <picture>
+        <img src='C:\\Users\\niyah\\Documents\\Dsktpappdev\\heart.dino2.png'width="250" height="250" >
+    </picture>
+       </body>
+    </div>
+</section>
+</html>

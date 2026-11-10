@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Content Security Policy to restrict external resources -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
+  <script src="./renderer.js"></script>
+  <link href="./styles.css" rel="stylesheet">
+  <title>Countdown Timer</title>
+</head>
+<body>
+<style>
+  .timer {
+    position: absolute;
+    top: 400px;
+    left: 145px;
+  }
+  button {
+    background-color: #B5D9FE;
+    text-align: center;
+    position: absolute;
+    top:350px;
+    left:215px;
+  }
+  button:hover {
+    background-color: #ABD4FE;
+
+}
+</style>
+    <h2>Timer ends in...</h2>
+  
+<section>
+  <video id="gif" autoplay loop muted playsinline>
+    <source src="file:///C:/Users/niyah/Documents/Dsktpappdev/ezgif-762ae3878ca432.mp4" type="video/mp4">
+  </video>
+
+</section>
+</section>
+<section>
+
+</section>
+
+  <!-- Display the timer countdown -->
+  <div class="timer" id="timerDisplay" style= >00:00M<br></div>
+  <audio id="alarm-sound" src="timerend.mp3" preload="auto"></audio>
+  <script>
+
+  let countdown;
+  let remainingTime;
+
+  // Function to start the timer when the button is clicked
+  function startTimer() {
+    // Get the values from localStorage
+    const energyLevel = localStorage.getItem("energy-level");
+    const motLevel = localStorage.getItem("mot-level");
+    const catchUpTime = parseInt(localStorage.getItem("catchUp"), 10);
+    const alarmSound = document.getElementById("alarm-sound");
+
+    // Use the values from localStorage, default to 15 minutes if not available
+    const energyTime = energyLevel ? parseInt(energyLevel) : 15;
+    const motTime = motLevel ? parseInt(motLevel) : 15;
+
+    // Set the remaining time (in minutes) from the maximum of the selected times + catchUp time
+    remainingTime = Math.max(energyTime + motTime) + catchUpTime;
+
+    // Convert the time to seconds for countdown
+    remainingTime *= 60; // convert minutes to seconds
+
+    // Start the countdown
+    countdown = setInterval(function() {
+      remainingTime--;
+      document.getElementById("timerDisplay").textContent = formatTime(remainingTime);
+
+      if (remainingTime <= 0) {
+        clearInterval(countdown);
+        alert("Time's up!");
+        alarmSound.play();
+      }
+    }, 1000); // Update every second
+  }
+
+  // Helper function to format time as MM:SS
+  function formatTime(seconds) {
+    let minutes = Math.floor(seconds / 60);
+    let sec = seconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
+  }
+
+  // Initialize the timer values based on the user’s previous selection when the page loads
+  window.onload = function() {
+    // Ensure the button has the event listener before trying to start the timer
+    document.getElementById("startBtn").addEventListener("click", startTimer);
+    document.getElementById("timerDisplay").textContent = '00:00'; // Set initial display to 00:00
+  };
+</script>
+  <!-- Button to start the timer -->
+  <button id="startBtn">Begin!</button>
+
+  <!-- Link to go to bye.html -->
+  <section>
+    <div id="cntdwn" class="tabcontent">
+      <a href="bye.html">End!</a>
+    </div>
+  </section>
+
+</body>
+</html>
